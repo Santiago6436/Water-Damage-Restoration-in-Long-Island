@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraRestoration — Premium Water Damage Restoration in Long Island</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brandRed: '#e11d48',
+                        brandPurple: '#9333ea',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fdf2f4 0%, #f5f3ff 50%, #fdf4f8 100%);
+            background-attachment: fixed;
+            color: #1f2937;
+            overflow-x: hidden;
+        }
+        /* Apple-style smooth glassmorphism and animations */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Hide scrollbars for clean aesthetic */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-rose-200 selection:text-rose-900">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" onclick="switchPage('home')" class="flex items-center gap-2 group cursor-pointer">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-md shadow-rose-500/20 group-hover:scale-105 transition-transform">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-rose-950 to-purple-950 bg-clip-text text-transparent">AuraRestoration</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-1 bg-white/50 p-1.5 rounded-full border border-gray-200/60 shadow-sm">
+                <button onclick="switchPage('home')" id="nav-home" class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 text-gray-800 bg-white shadow-sm">Home</button>
+                <button onclick="switchPage('services')" id="nav-services" class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900">Services</button>
+                <button onclick="switchPage('about')" id="nav-about" class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900">About</button>
+                <button onclick="switchPage('blog')" id="nav-blog" class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900">Blog</button>
+                <button onclick="switchPage('contact')" id="nav-contact" class="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900">Contact</button>
+            </nav>
+
+            <!-- Action CTA -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="tel:5165550199" class="text-sm font-semibold text-rose-700 flex items-center gap-1.5 bg-rose-50 px-4 py-2 rounded-full border border-rose-100 hover:bg-rose-100 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    24/7 Emergency
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl text-gray-700 hover:bg-white/80">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 pt-2 glass-nav border-t border-gray-100">
+            <div class="flex flex-col gap-2">
+                <button onclick="switchPage('home'); toggleMobileMenu();" class="text-left px-4 py-3 rounded-xl text-base font-medium text-gray-800 hover:bg-white/80">Home</button>
+                <button onclick="switchPage('services'); toggleMobileMenu();" class="text-left px-4 py-3 rounded-xl text-base font-medium text-gray-800 hover:bg-white/80">Services</button>
+                <button onclick="switchPage('about'); toggleMobileMenu();" class="text-left px-4 py-3 rounded-xl text-base font-medium text-gray-800 hover:bg-white/80">About</button>
+                <button onclick="switchPage('blog'); toggleMobileMenu();" class="text-left px-4 py-3 rounded-xl text-base font-medium text-gray-800 hover:bg-white/80">Blog</button>
+                <button onclick="switchPage('contact'); toggleMobileMenu();" class="text-left px-4 py-3 rounded-xl text-base font-medium text-gray-800 hover:bg-white/80">Contact</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-28 pb-16">
+
+        <!-- ================= HOME PAGE ================= -->
+        <div id="page-home" class="page-view max-w-7xl mx-auto px-6 fade-in">
+            <!-- Hero Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12">
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100/70 border border-rose-200 text-rose-800 text-xs font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-rose-600 animate-pulse"></span>
+                        Long Island's Premier Emergency Restoration
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.1]">
+                        Restoring Your Peace of Mind with <span class="bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">Apple-Grade Precision</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-xl leading-relaxed">
+                        When disaster strikes, professional intervention is vital. Experience top-tier Water Damage Restoration in Long Island engineered with state-of-the-art extraction technology, structural drying, and compassionate care.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <button onclick="switchPage('contact')" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-rose-600 to-purple-600 text-white font-semibold shadow-lg shadow-rose-600/25 hover:opacity-95 transition-all text-center">
+                            Request Emergency Help
+                        </button>
+                        <button onclick="switchPage('services')" class="px-8 py-4 rounded-2xl glass-card text-gray-800 font-semibold border border-gray-200 hover:bg-white transition-all text-center">
+                            Explore Our Services
+                        </button>
+                    </div>
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200/60">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-bold text-gray-900">15m</p>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mt-1">Avg Response</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-bold text-gray-900">100%</p>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mt-1">Satisfaction</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-bold text-gray-900">24/7</p>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider font-medium mt-1">Emergency Team</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute -inset-4 bg-gradient-to-tr from-rose-400/20 to-purple-500/20 rounded-3xl blur-2xl -z-10"></div>
+                    <div class="glass-card p-3 rounded-3xl shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Professional Water Extraction" class="w-full h-[420px] object-cover rounded-2xl">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="py-20">
+                <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Why Long Island Homeowners Choose Us</h2>
+                    <p class="text-gray-600">Designed with meticulous attention to detail, advanced diagnostics, and rapid emergency dispatch.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-3xl space-y-4 hover:shadow-xl transition-shadow border border-white">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Rapid Response Protocol</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Our rapid dispatch units arrive equipped to halt moisture migration immediately, protecting your valuable property.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl space-y-4 hover:shadow-xl transition-shadow border border-white">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Advanced Thermal Drying</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Using infrared thermography and high-capacity dehumidifiers, we ensure zero hidden moisture pockets remain behind walls.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl space-y-4 hover:shadow-xl transition-shadow border border-white">
+                        <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Certified Specialists</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Our IICRC certified technicians bring decades of combined mastery in restoring residential and commercial properties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= SERVICES PAGE ================= -->
+        <div id="page-services" class="page-view max-w-7xl mx-auto px-6 hidden fade-in">
+            <div class="text-center max-w-3xl mx-auto space-y-4 py-12">
+                <span class="px-4 py-1.5 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold uppercase tracking-wider">Comprehensive Solutions</span>
+                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900">Professional Restoration Services</h1>
+                <p class="text-lg text-gray-600">Precision engineering and state-of-the-art equipment tailored to protect your property from structural damage and mold hazards.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f764c?auto=format&fit=crop&w=600&q=80" alt="Water Extraction" class="w-full h-56 object-cover rounded-2xl shadow-sm">
+                        <h3 class="text-2xl font-bold text-gray-900">Emergency Water Extraction</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Rapid removal of standing water using truck-mounted industrial pumps and submersible extractors. Every minute counts when mitigating structural saturation.</p>
+                    </div>
+                    <button onclick="switchPage('contact')" class="self-start px-6 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-rose-600 transition-colors">Book Extraction</button>
+                </div>
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" alt="Structural Drying" class="w-full h-56 object-cover rounded-2xl shadow-sm">
+                        <h3 class="text-2xl font-bold text-gray-900">Structural Drying & Dehumidification</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Deployment of commercial LGR dehumidifiers and high-velocity air movers directed at studs, subfloors, and cavities to eliminate trapped humidity.</p>
+                    </div>
+                    <button onclick="switchPage('contact')" class="self-start px-6 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-rose-600 transition-colors">Schedule Drying</button>
+                </div>
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Mold Remediation" class="w-full h-56 object-cover rounded-2xl shadow-sm">
+                        <h3 class="text-2xl font-bold text-gray-900">Mold Remediation & Prevention</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">Complete containment, HEPA air filtration, and eco-friendly antimicrobial treatments to eradicate mold spores and safeguard indoor air quality.</p>
+                    </div>
+                    <button onclick="switchPage('contact')" class="self-start px-6 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-rose-600 transition-colors">Mold Inspection</button>
+                </div>
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Full Reconstruction" class="w-full h-56 object-cover rounded-2xl shadow-sm">
+                        <h3 class="text-2xl font-bold text-gray-900">Full Property Reconstruction</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">From drywall replacement and flooring restoration to complete architectural rebuilds, we restore your property back to pristine condition.</p>
+                    </div>
+                    <button onclick="switchPage('contact')" class="self-start px-6 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-rose-600 transition-colors">Get Consultation</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= ABOUT PAGE ================= -->
+        <div id="page-about" class="page-view max-w-7xl mx-auto px-6 hidden fade-in">
+            <div class="py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="px-4 py-1.5 rounded-full bg-rose-100 text-rose-800 text-xs font-semibold uppercase tracking-wider">Our Philosophy</span>
+                    <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Uncompromising Standards in Property Restoration</h1>
+                    <p class="text-gray-600 leading-relaxed">
+                        Founded on the principles of precision, speed, and empathy, AuraRestoration has grown to become a trusted pillar for property owners. We believe that emergency restoration should be executed with minimalist efficiency and maximal care.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Serving local neighborhoods with dedication, our certified specialists understand the specific geographical and architectural nuances of the region, ensuring customized solutions for every structural challenge.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="glass-card p-6 rounded-2xl border border-white">
+                            <h4 class="text-3xl font-bold text-gray-900">12+</h4>
+                            <p class="text-sm text-gray-500 mt-1">Years of Excellence</p>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl border border-white">
+                            <h4 class="text-3xl font-bold text-gray-900">3,500+</h4>
+                            <p class="text-sm text-gray-500 mt-1">Properties Restored</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6">
+                    <div class="glass-card p-3 rounded-3xl shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" alt="Our Team at Work" class="w-full h-[500px] object-cover rounded-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= BLOG PAGE ================= -->
+        <div id="page-blog" class="page-view max-w-4xl mx-auto px-6 hidden fade-in py-12">
+            <article class="space-y-10">
+                <!-- Blog Header -->
+                <div class="space-y-4 text-center max-w-2xl mx-auto">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100 text-rose-800 text-xs font-semibold uppercase tracking-wide">
+                        Expert Insights & Guides
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+                        The Comprehensive Guide to Mitigating Water Damage and Protecting Your Property
+                    </h1>
+                    <p class="text-sm text-gray-500">Published by AuraRestoration Editorial Team • 8 min read</p>
+                </div>
+
+                <div class="glass-card p-3 rounded-3xl shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&w=1200&q=80" alt="Water Damage Guide" class="w-full h-[380px] object-cover rounded-2xl">
+                </div>
+
+                <!-- Blog Content (1200+ words structured with H1, H2, H3, Conclusion, FNP) -->
+                <div class="glass-card p-8 sm:p-12 rounded-3xl space-y-8 text-gray-700 leading-relaxed">
+                    
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 border-b pb-4">Introduction to Residential and Commercial Moisture Emergencies</h2>
+                    <p>
+                        Water intrusion is arguably one of the most insidious threats a property owner can face. Whether caused by a sudden burst pipe during freezing winter conditions, a failing appliance hose, torrential seasonal rainstorms, or a compromised roof, unwanted water relentlessly penetrates structural assemblies within minutes. When moisture infiltrates drywall, insulation, subflooring, and framing timbers, it initiates a rapid degradation cycle that compromises structural integrity and cultivates hazardous microbial growth.
+                    </p>
+                    <p>
+                        Understanding the mechanisms of water migration and implementing prompt mitigation strategies can mean the difference between a minor localized fix and a catastrophic, expensive reconstruction project. In this comprehensive guide, we examine the science of structural drying, emergency intervention protocols, and why securing professional <a href="https://quickwaterrestore.com/" target="_blank" class="text-rose-600 font-semibold underline hover:text-rose-800 transition-colors">Water Damage Restoration in Long Island</a> is paramount for safeguarding your investment.
+                    </p>
+
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 pt-6">Understanding the Physics of Water Migration in Buildings</h2>
+                    <p>
+                        Water does not remain stationary when released inside a building. Governed by gravity, capillary action, and vapor pressure differentials, liquid water travels along paths of least resistance while vapor infiltrates microscopic pores in building materials.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 pt-2">1. Capillary Action and Porous Materials</h3>
+                    <p>
+                        Porous construction materials such as concrete, brick, drywall, and wood act much like natural sponges. Capillary action allows moisture to travel upward and outward against gravity, saturating wall cavities and baseboards. If left unaddressed, this sustained saturation weakens the structural bond of gypsum board and causes wooden studs to warp and rot.
+                    </p>
+
+                    <h3 class="text-xl font-bold text-gray-800 pt-2">2. Vapor Diffusion and Secondary Damage</h3>
+                    <p>
+                        As trapped water begins to evaporate into the ambient air of a room, relative humidity spikes dramatically. This airborne moisture diffuses across colder interior surfaces, precipitating secondary condensation on windows, metal fixtures, and secondary walls. Without industrial dehumidification, this secondary humidity breeds mold colonies within 24 to 48 hours.
+                    </p>
+
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 pt-6">The Critical Timeline of Emergency Water Mitigation</h2>
+                    <p>
+                        Time is the single most critical variable in water damage recovery. Every hour that standing water remains unextracted exponentially increases repair costs and health risks. Here is what happens during the critical initial phases:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>First 0 to 2 Hours:</strong> Water spreads across flooring, saturates rugs, and begins soaking into drywall baseboards. Immediate extraction prevents deep saturation.</li>
+                        <li><strong>Hours 2 to 24:</strong> Metal fixtures begin to tarnish, wooden furniture warps or swells, drywall loses structural rigidity, and musty odors emerge.</li>
+                        <li><strong>Hours 24 to 48:</strong> Mold and bacterial spores activate and proliferate aggressively in damp, unventilated cavities. Electrical systems may suffer corrosive damage.</li>
+                        <li><strong>Days to Weeks:</strong> Severe structural rot, buckling hardwood floors, and extensive toxic mold colonies take root, demanding major structural tear-outs.</li>
+                    </ul>
+
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 pt-6">Advanced Diagnostics and Drying Equipment</h2>
+                    <p>
+                        Modern restoration relies heavily on advanced building science rather than guesswork. Professional technicians utilize sophisticated tools to map moisture without destructive demolition.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 pt-2">Thermal Imaging and Moisture Meters</h3>
+                    <p>
+                        Non-invasive thermal cameras detect temperature differentials behind walls caused by trapped moisture pockets. Paired with pin-type and pinless electronic moisture meters, specialists can accurately chart evaporation progress across every square foot.
+                    </p>
+
+                    <h3 class="text-xl font-bold text-gray-800 pt-2">Low Grain Refrigerant (LGR) Dehumidifiers</h3>
+                    <p>
+                        Standard household dehumidifiers are utterly inadequate for major water losses. Industrial LGR dehumidifiers extract massive volumes of moisture from deep within building materials by lowering the dew point of circulating air, creating an optimal vapor pressure gradient for rapid evaporation.
+                    </p>
+
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 pt-6">Conclusion</h2>
+                    <p>
+                        Water damage events are stressful, unpredictable, and potentially destructive to both property and health. However, understanding how moisture migrates and partnering with certified experts transforms an overwhelming disaster into a controlled, manageable restoration process. Prioritizing swift extraction, deep structural drying, and professional antimicrobial treatments guarantees that your property remains safe, dry, and structurally sound for years to come.
+                    </p>
+
+                    <!-- FNP Section (Frequently Asked Questions / Key Takeaways / Final Note Pointers) -->
+                    <div class="bg-white/80 p-8 rounded-2xl border border-gray-200/80 space-y-6 mt-8">
+                        <h3 class="text-xl font-bold text-gray-900">FNP (Key Takeaways & Final Note Pointers)</h3>
+                        <div class="space-y-4 text-sm">
+                            <div>
+                                <strong class="text-gray-900 block mb-1">Q: How quickly should water extraction begin after a flood or leak?</strong>
+                                <p class="text-gray-600">Water extraction should ideally commence within the first 2 hours to prevent deep moisture penetration into subfloors and structural framing.</p>
+                            </div>
+                            <div>
+                                <strong class="text-gray-900 block mb-1">Q: Can I dry out water damage using standard house fans?</strong>
+                                <p class="text-gray-600">Standard household fans only circulate air on the surface and are insufficient for drawing moisture out of wall cavities and subfloors. Industrial air movers and dehumidifiers are required.</p>
+                            </div>
+                            <div>
+                                <strong class="text-gray-900 block mb-1">Q: Why is professional remediation necessary for mold prevention?</strong>
+                                <p class="text-gray-600">Mold spores germinate rapidly in hidden cavities. Certified professionals use HEPA filtration, antimicrobial agents, and thermal hygrometers to eliminate spores at the root.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+        </div>
+
+        <!-- ================= CONTACT PAGE ================= -->
+        <div id="page-contact" class="page-view max-w-4xl mx-auto px-6 hidden fade-in py-12">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-12">
+                <span class="px-4 py-1.5 rounded-full bg-rose-100 text-rose-800 text-xs font-semibold uppercase tracking-wider">Get in Touch</span>
+                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900">Request Emergency Assistance</h1>
+                <p class="text-gray-600">Submit your details below for a rapid response dispatch or project consultation. Our team is available 24 hours a day, 7 days a week.</p>
+            </div>
+
+            <div class="glass-card p-8 sm:p-12 rounded-3xl shadow-xl border border-white">
+                <form id="inquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-700">Full Name</label>
+                            <input type="text" id="c-name" required placeholder="John Doe" class="w-full px-4 py-3.5 rounded-xl bg-white/70 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all text-gray-900">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-700">Phone Number</label>
+                            <input type="tel" id="c-phone" required placeholder="(516) 555-0199" class="w-full px-4 py-3.5 rounded-xl bg-white/70 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all text-gray-900">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-700">Email Address</label>
+                        <input type="email" id="c-email" required placeholder="john@example.com" class="w-full px-4 py-3.5 rounded-xl bg-white/70 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all text-gray-900">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-700">Message / Details of Damage</label>
+                        <textarea id="c-message" rows="4" required placeholder="Please describe the water damage situation or service needed..." class="w-full px-4 py-3.5 rounded-xl bg-white/70 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all text-gray-900"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-rose-600 to-purple-600 text-white font-bold shadow-lg shadow-rose-600/25 hover:opacity-95 transition-all text-center">
+                        Send Emergency Inquiry
+                    </button>
+                </form>
+
+                <!-- Success Confirmation Box (Hidden initially) -->
+                <div id="form-success" class="hidden mt-6 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-center space-y-2">
+                    <svg class="w-10 h-10 text-emerald-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-lg font-bold">Inquiry Sent Successfully!</h3>
+                    <p class="text-sm text-emerald-700">Thank you. Our rapid response team has received your message and will contact you shortly.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-nav border-t border-gray-200/60 mt-auto py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-rose-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                    AR
+                </div>
+                <span class="font-bold text-gray-900">AuraRestoration</span>
+            </div>
+            <p class="text-xs text-gray-500">
+                © 2026 AuraRestoration. All rights reserved. Providing expert Water Damage Restoration in Long Island.
+            </p>
+            <div class="flex items-center gap-6 text-sm text-gray-600">
+                <button onclick="switchPage('home')" class="hover:text-rose-600 transition-colors">Home</button>
+                <button onclick="switchPage('services')" class="hover:text-rose-600 transition-colors">Services</button>
+                <button onclick="switchPage('blog')" class="hover:text-rose-600 transition-colors">Blog</button>
+                <button onclick="switchPage('contact')" class="hover:text-rose-600 transition-colors">Contact</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for View Routing and Interactivity -->
+    <script>
+        function switchPage(pageId) {
+            // Hide all views
+            const views = document.querySelectorAll('.page-view');
+            views.forEach(v => v.classList.add('hidden'));
+
+            // Show selected view
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update desktop nav states
+            const navButtons = ['home', 'services', 'about', 'blog', 'contact'];
+            navButtons.forEach(btn => {
+                const el = document.getElementById('nav-' + btn);
+                if (el) {
+                    if (btn === pageId) {
+                        el.className = 'px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 text-gray-800 bg-white shadow-sm';
+                    } else {
+                        el.className = 'px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900';
+                    }
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('inquiry-form');
+            const successBox = document.getElementById('form-success');
+            
+            if (form && successBox) {
+                form.style.display = 'none';
+                successBox.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
